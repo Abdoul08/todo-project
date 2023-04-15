@@ -25,7 +25,7 @@ import axios from 'axios';
 import TodoItem from '@/components/TodoItem';
 
 const client = axios.create({
-  baseURL: "https://api.github.com/repos/diveintocode-corp/vue_seriese_api",
+  baseURL: "https://api.github.com/repos/Abdoul08/todo-project",
   headers: {
     'Accept': 'application/vnd.github.v3+json',
     'Content-Type':'application/json',
@@ -36,7 +36,7 @@ const client = axios.create({
 
 export default {
   name: 'TodosIssues',
-   components: {
+  components: {
     TodoItem
   },
   data () {
@@ -47,7 +47,6 @@ export default {
     }
   },
   methods: {
-    // ここからtodoの管理
     addTodo(){
       this.todos.push(this.todo);
       this.todo= '';
@@ -55,12 +54,11 @@ export default {
     removeTodo(index){
       this.todos.splice(index, 1);
     },
-    // ここからissueの管理
     closeIssue(index){
       const target = this.issues[index];
       client.patch(`/issues/${target.number}`,
           {
-            state: "closed"
+            state: 'closed'
           },
         )
         .then(() => {

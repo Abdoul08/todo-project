@@ -23,7 +23,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: "https://api.github.com/repos/diveintocode-corp/vue_seriese_api",
+  baseURL: "https://api.github.com/repos/Abdoul08/todo-project",
   headers: {
     'Accept': 'application/vnd.github.v3+json',
     'Content-Type':'application/json',
@@ -68,5 +68,8 @@ export default {
       })
     }
   },
+  created() {
+    this.getIssues();
+  }
 }
 </script>
